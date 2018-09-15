@@ -43,3 +43,4 @@ for (var i = 1; i < localMaximumIndexes.length; i++) {
 }
 
 console.log (bpm);
+console.log('Writtem to ' + file);
