@@ -41,5 +41,5 @@ while (true) {
 
     console.log ("" + raw.toString() + " " + M_avg.toString() + " " + bpm.toString())
 
-      setTimeout(function(){}, 200);
+//    sleep(200);
 }

@@ -1,11 +1,15 @@
 const jsonfile = require('jsonfile')
-const timestamp = require('time-stamp');
 
 var inp = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 3, 2,
 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 3, 2,
 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 3, 2,
 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 3, 2,
 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 3, 2];
+
+function sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+}
 
 var delta = 0.1;
 
@@ -29,7 +33,7 @@ var bpm = [];
 
 var time = [];
 
-const file = './data/bpm' + timestamp.utc('YYYYMMDDHHmmss') + '.txt'
+const file = './data/bpm.txt'
 
 for (var i = 1; i < localMaximumIndexes.length; i++) {
     var interval = (localMaximumIndexes[i] - localMaximumIndexes[i - 1]) * delta;
@@ -37,10 +41,11 @@ for (var i = 1; i < localMaximumIndexes.length; i++) {
     var currentTime = localMaximumIndexes[i] * delta
     bpm.push({'time' : currentTime, 'bpm' : currentBpm});
 
-    jsonfile.writeFile(file, currentBpm, { flag: 'a' }, function (err) {
+    jsonfile.writeFile(file, currentBpm, function (err) {
         if (err) console.error(err)
     })
+
+    sleep(200);
 }
 
 console.log (bpm);
-console.log('Writtem to ' + file);

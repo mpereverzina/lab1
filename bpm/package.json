@@ -4,7 +4,9 @@
   "description": "BPM monitoring",
   "main": "index.js",
   "scripts": {
-    "bpm": "node ./bpm.js"
+    "bpm": "node ./bpm.js",
+    "bpm_moving_average": "node ./bpm_moving_average.js",
+    "indicate": "node ./indicator.js"
   },
   "keywords": [
     "BPM"
